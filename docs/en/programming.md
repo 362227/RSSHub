@@ -213,7 +213,7 @@ For instance, the `/github/topics/framework/l=php&o=desc&s=stars` route will gen
 
 ### Issue / Pull Request comments
 
-<RouteEn author="TonyRL" example="/github/comments/DIYgod/RSSHub/8116" path="/github/comments/:user/:repo/:number" :paramsDesc="['User / Org name', 'Repo name', 'Issue or pull number']" radar="1" rssbud="1"/>
+<RouteEn author="TonyRL FliegendeWurst" example="/github/comments/DIYgod/RSSHub/8116" path="/github/comments/:user/:repo/:number?" :paramsDesc="['User / Org name', 'Repo name', 'Issue or pull number (if omitted: all)']" radar="1" rssbud="1"/>
 
 ### Wiki History
 
@@ -222,6 +222,10 @@ For instance, the `/github/topics/framework/l=php&o=desc&s=stars` route will gen
 ### Notifications
 
 <RouteEn author="zhzy0077" example="/github/notifications" path="/github/notifications" radar="1" rssbud="1" selfhost="1"/>
+
+### Gist Commits
+
+<RouteEn author="TonyRL" example="/github/gist/d2c152bb7179d07015f336b1a0582679" path="/github/gist/:gistId" :paramsDesc="['Gist ID']" radar="1" rssbud="1"/>
 
 ## GitLab
 
@@ -295,6 +299,12 @@ Subscribe to the updates (threads and submission) from a paritcular Hacker News 
 
 <RouteEn author="hellodword" example="/hex-rays/news" path="/hex-rays/news" />
 
+## Huggingface
+
+### Daily Papers
+
+<RouteEn author="zeyugao" example="/huggingface/daily-papers" path="/huggingface/daily-papers" />
+
 ## Issue Hunt
 
 ### Project Funded
@@ -322,6 +332,13 @@ Subscribe to the updates (threads and submission) from a paritcular Hacker News 
 | All Categories | Featured | Research | Recruitment | Getting started | Masters | Playground | Analytics |
 
 </RouteEn>
+
+## Layer3
+
+### Quest
+
+<RouteEn author="nczitzk" example="/layer3/quests" path="/layer3/quests" radar="1"/>
+
 
 ## LeetCode
 

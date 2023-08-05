@@ -201,7 +201,29 @@ pageClass: routes
 
 <Route author="chengyuhui" example="/cngal/entry/2693" path="/cngal/entry/:id" :paramsDesc="['词条ID，游戏或制作者页面URL的最后一串数字']" radar="1" rssbud="1"/>
 
+## Comicat
+
+### 搜索关键词
+
+<Route author="Cyang39" example="/comicat/search/喵萌奶茶屋+跃动青春+720P+简日" path="/comicat/search/:keyword" :paramsDesc="['关键词，请用`+`号连接']" supportBT=1/>
+
 ## DLsite
+
+### 通用
+
+<Route author="nczitzk" example="/dlsite/home/new" path="/dlsite/:path+" :paramsDesc="['路径，默认为 `/home/new`，即発売カレンダー']">
+
+::: tip 提示
+
+订阅该路由可以先访问网站指定过滤器，然后在路由的路径处填写对应页面 URL 中 `https://www.dlsite.com/` 后的字段。下面是两个例子。
+
+若订阅 [「ボイス・ASMR」の作品一覧 発売日が新しい順](https://www.dlsite.com/home/works/type/=/work_type_category/audio/order/release_d)，则将对应页面 URL <https://www.dlsite.com/home/works/type/=/work_type_category/audio/order/release_d> 中 `https://www.dlsite.com/` 后的字段 `home/works/type/=/work_type_category/audio/order/release_d` 作为路径填入。此时路由为 [`/dlsite/home/works/type/=/work_type_category/audio/order/release_d`](https://rsshub.app/dlsite/home/works/type/=/work_type_category/audio/order/release_d)
+
+若订阅 [割引中作品 割引開始日が新しい順](https://www.dlsite.com/home/works/discount/=/order/cstart_d)，则将对应页面 URL <https://www.dlsite.com/home/works/discount/=/order/cstart_d> 中 `https://www.dlsite.com/` 后的字段 `home/works/discount/=/order/cstart_d` 作为路径填入。此时路由为 [`/dlsite/home/works/discount/=/order/cstart_d`](https://rsshub.app/dlsite/home/works/discount/=/order/cstart_d)
+
+:::
+
+</Route>
 
 ### 当前日期发售的新产品
 
@@ -216,6 +238,10 @@ pageClass: routes
 ### 产品打折信息
 
 <Route author="cssxsh" example="/dlsite/campaign/home" path="/dlsite/campaign/:type/:free?" :paramsDesc="['类型，同上表', '只看免费，任意值开启，为空关闭']"/>
+
+### Ci-en 创作者文章
+
+<Route author="nczitzk" example="/dlsite/ci-en/:id/article" path="/dlsite/ci-en/7400/article" :paramsDesc="['创作者 id，可在对应创作者页 URL 中找到']"/>
 
 ## ebb.io
 
@@ -287,7 +313,7 @@ pageClass: routes
 
 ::: warning 注意
 
-用户动态需要 iwara 登录后的 Cookie 值，所以只能自建，详情见[部署页面](/install/#route-specific-configurations)的配置模块。
+用户动态需要 iwara 用户名和密码，所以只能自建，详情见[部署页面](/install/#route-specific-configurations)的配置模块。
 
 :::
 
@@ -434,6 +460,12 @@ Sources
 
 <Route author="TonyRL" example="/qoo-app/notes/user/23266114" path="/qoo-app/notes/:lang?/user/:uid" :paramsDesc="['語言，見上表，留空為中文', '用户 ID，可在 URL 找到']"  radar="1"/>
 
+## Rawkuma
+
+### Manga
+
+<Route author="nczitzk" example="/rawkuma/manga/tensei-shitara-dai-nana-ouji-dattanode-kimamani-majutsu-o-kiwamemasu" path="/rawkuma/manga/:id" :paramsDesc="['Manga ID，可在 URL 找到']" radar="1"/>
+
 ## say 花火
 
 ### 文章
@@ -528,7 +560,7 @@ Sources
 
 ## 包子漫画
 
-#### 订阅漫画
+### 订阅漫画
 
 <Route author="Fatpandac" example="/baozimh/comic/guowangpaiming-shiricaofu" path="/baozimh/comic/:name" :paramsDesc="['漫画名称，在漫画链接可以得到(`comic/` 后的那段)']"/>
 
@@ -636,6 +668,12 @@ Sources
 
 ## 禁漫天堂
 
+::: tip 提示
+
+禁漫天堂有多个备用域名，本路由默认使用域名 <https://jmcomic.me>，若该域名无法访问，可以通过在路由最后加上 `?domain=<域名>` 指定路由访问的域名。如指定备用域名为 <https://jmcomic1.me>，则在所有禁漫天堂路由最后加上 `?domain=jmcomic1.me` 即可，此时路由为 [`/18comic?domain=jmcomic1.me`](https://rsshub.app/18comic?domain=jmcomic1.me)
+
+:::
+
 ### 成人 A 漫
 
 <Route author="nczitzk" example="/18comic" path="/18comic/:category?/:time?/:order?/:keyword?" :paramsDesc="['分类，见下表，默认为 `all` 即全部', '时间范围，见下表，默认为 `a` 即全部', '排列顺序，见下表，默认为 `mr` 即最新', '关键字，见下表，默认为空']">
@@ -732,7 +770,7 @@ Sources
 
 ### 漫画更新
 
-<Route author="btdwv marvolo666 yan12125" path="/copymanga/comic/:id/:chapterCnt?" example="/copymanga/comic/dianjuren/5" :paramsDesc="['漫画ID', '返回章节的数量，默认为0，返回所有章节']" radar="1" rssbud="1"/>
+<Route author="btdwv marvolo666 yan12125" path="/copymanga/comic/:id/:chapterCnt?" example="/copymanga/comic/dianjuren/5" :paramsDesc="['漫画ID', '返回章节的数量，默认为 `10`']" radar="1" rssbud="1"/>
 
 ## 漫画 DB
 

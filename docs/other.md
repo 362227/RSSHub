@@ -76,6 +76,16 @@ pageClass: routes
 
 见 [#app-store-mac-app-store](/program-update.html#app-store-mac-app-store)
 
+## Aqara
+
+### Community
+
+<Route author="nczitzk" example="/aqara/community" path="/aqara/community/:id?/:keyword?" :paramsDesc="['分类 id，可在对应分类页 URL 中找到，默认为全部', '关键字，默认为空']"/>
+
+### News
+
+<Route author="nczitzk" example="/aqara/news" path="/aqara/news"/>
+
 ## AutoTrader
 
 ### 搜索结果
@@ -293,6 +303,38 @@ pageClass: routes
 
 <Route author="WenryXu" example="/noi/rg-news" path="/noi/rg-news"/>
 
+## Notion
+
+::: warning 注意
+
+需要设置 Notion 集成，详情请见 [部分 RSS 模块配置](/install/#pei-zhi-bu-fen-rss-mo-kuai-pei-zhi)
+
+:::
+
+::: tip 建议
+
+建议与 Notion Web Clipper 等剪藏工具搭配使用
+
+:::
+
+### Database
+
+<Route author="curly210102" example="/notion/database/a7cc133b68454f138011f1530a13531e" path="/notion/database/:databaseId" :paramsDesc="['Database ID']" selfhost="1" radar="1">
+
+可选 query 参数 `properties=`，用来自定义字段对应关系；内置有 author、link、pubTime 三个字段用于增加辅助信息。
+
+例如，在 Database 中设置了 "作者"、"文章原链接"、"发布时间"" 三个 property，将下述 JS 代码的执行结果给 `properties` 参数。
+
+```js
+encodeURIComponent(JSON.stringify({"author": "作者", "link": "文章原链接", "pubTime": "发布时间"}))
+```
+
+可选 query 参数 `query=`，用来自定义 Database 的查询规则，例如自定义排序和筛选规则。
+
+书写结构请查阅 [Notion 文档](https://developers.notion.com/reference/post-database-query)，将 `encodeURIComponent(JSON.stringify(自定义规则))` 的执行给 `query` 参数。
+
+</Route>
+
 ## ONE・一个
 
 ### 图片文字问答
@@ -345,6 +387,16 @@ pageClass: routes
 <Route author="xyqfer" example="/tssstatus/j42dap/14W585a" path="/tssstatus/:board/:build" :paramsDesc="['平台 id', '版本 id']">
 
 board 和 build 可在[这里](http://api.ineal.me/tss/status)查看
+
+</Route>
+
+## V2rayShare
+
+### 免费节点
+
+<Route author="77taibai" example="/v2rayshare" path="/v2rayshare">
+
+获取来自 V2rayShare 的免费节点，可以通过链接复制或下载
 
 </Route>
 
@@ -411,7 +463,7 @@ type 为 all 时，category 参数不支持 cost 和 free
 
 ### 周度市场观察
 
-<Route author="nczitzk" example="/iresearch/weekly" path="/iresearch/weekly:category?" :paramsDesc="['分类，见下表，默认为全部']">
+<Route author="nczitzk" example="/iresearch/weekly" path="/iresearch/weekly/:category?" :paramsDesc="['分类，见下表，默认为全部']">
 
 | 家电行业 | 服装行业 | 美妆行业 | 食品饮料行业 |
 | -------- | -------- | -------- | ------------ |
@@ -422,7 +474,7 @@ type 为 all 时，category 参数不支持 cost 和 free
 
 ### 最近更新
 
-<Route author="nczitzk" example="/3k8/latest" path="/3k8/latest"/>
+<Route author="nczitzk" example="/iqnew/latest" path="/iqnew/latest" radar="1"/>
 
 ## 爱发电
 
@@ -526,24 +578,6 @@ type 为 all 时，category 参数不支持 cost 和 free
 ### 日榜
 
 <Route author="Gem1ni" example="/guduodata/daily" path="/guduodata/daily" />
-
-## 光大银行
-
-### 外汇牌价
-
-#### 总览
-
-<Route author="linbuxiao" example="/quotation/all" path="/quotation/all" />
-
-#### 历史牌价
-
-<Route author="linbuxiao" example="/quotation/history/usd" path="/quotation/history/:type" :paramsDesc="['货币的缩写，见下表']">
-
-| 美元 | 英镑 | 港币 | 瑞士法郎 | 瑞典克郎 | 丹麦克郎 | 挪威克郎 | 日元 | 加拿大元 | 澳大利亚元 | 新加坡元 | 欧元 | 澳门元 | 泰国铢 | 新西兰元 | 韩圆 |
-| ---- | ---- | ---- | -------- | -------- | -------- | -------- | ---- | -------- | ---------- | -------- | ---- | ------ | ------ | -------- | ---- |
-| usd  | gbp  | hkd  | chf      | sek      | dkk      | nok      | jpy  | cad      | aud        | sgd      | eur  | mop    | thb    | nzd      | krw  |
-
-</Route>
 
 ## 国家留学网
 
@@ -1041,6 +1075,24 @@ type 为 all 时，category 参数不支持 cost 和 free
 
 <Route author="nczitzk" example="/cktest/policy" path="/cktest/policy"/>
 
+## 中国光大银行
+
+### 外汇牌价
+
+#### 总览
+
+<Route author="linbuxiao" example="/cebbank/quotation/all" path="/cebbank/quotation/all" />
+
+#### 历史牌价
+
+<Route author="linbuxiao" example="/cebbank/quotation/history/usd" path="/cebbank/quotation/history/:type" :paramsDesc="['货币的缩写，见下表']">
+
+| 美元 | 英镑 | 港币 | 瑞士法郎 | 瑞典克郎 | 丹麦克郎 | 挪威克郎 | 日元 | 加拿大元 | 澳大利亚元 | 新加坡元 | 欧元 | 澳门元 | 泰国铢 | 新西兰元 | 韩圆 |
+| ---- | ---- | ---- | -------- | -------- | -------- | -------- | ---- | -------- | ---------- | -------- | ---- | ------ | ------ | -------- | ---- |
+| usd  | gbp  | hkd  | chf      | sek      | dkk      | nok      | jpy  | cad      | aud        | sgd      | eur  | mop    | thb    | nzd      | krw  |
+
+</Route>
+
 ## 中国互联网联合辟谣平台
 
 ### 今日辟谣
@@ -1068,6 +1120,80 @@ type 为 all 时，category 参数不支持 cost 和 free
 ### 苹果邮件
 
 <Route author="Fatpandac" example="/ems/apple/EZ319397281CN" path="/ems/apple/:id" :paramsDesc="['苹果邮件编号']"/>
+
+## 转换
+
+传递 URL 和转化规则，将 HTML/JSON 转换为 RSS
+
+### HTML
+
+在 `routeParams` 参数中以 query string 格式指定选项，可以控制提取数据
+
+| 键              | 含义                                                            | 接受的值 | 默认值                   |
+| --------------- | --------------------------------------------------------------- | -------- | ------------------------ |
+| `title`         | 指定 RSS 的标题                                                 | `string` | 从当前网页中取 `<title>` |
+| `item`          | 通过 CSS 选择器查找 HTML 元素作为 `item` 元素                   | `string` | html                     |
+| `itemTitle`     | 在 `item` 中通过 CSS 选择器查找 HTML 元素作为 `title` 元素      | `string` | `item` 元素              |
+| `itemTitleAttr` | 获取 `title` 元素属性作为标题                                   | `string` | 元素 text                |
+| `itemLink`      | 在 `item` 中通过 CSS 选择器查找 HTML 元素作为 `link` 元素       | `string` | `item` 元素              |
+| `itemLinkAttr`  | 获取 `link` 元素属性作为链接                                    | `string` | `href`                   |
+| `itemDesc`      | 在 `item` 中通过 CSS 选择器查找 HTML 元素作为 `descrption` 元素 | `string` | `item` 元素              |
+| `itemDescAttr`  | 获取 `descrption` 元素属性作为描述                              | `string` | 元素 html                |
+
+<Route author="ttttmr" example="/rsshub/transform/html/https%3A%2F%2Fwechat2rss.xlab.app%2Fposts%2Flist%2F/item=div%5Bclass%3D%27post%2Dcontent%27%5D%20p%20a" path="/rsshub/transform/html/:url/:routeParams" :paramsDesc="['URL地址，需经 URL 编码', '转换规则，需经 URL 编码']" selfhost="1">
+
+上述例子中参数解析如下
+
+| 参数           | 值                                        |
+| -------------- | ----------------------------------------- |
+| `:url`         | `https://wechat2rss.xlab.app/posts/list/` |
+| `:routeParams` | `item=div[class='post-content'] p a`      |
+
+`routeParams`参数解析如下
+
+| 参数   | 值                              |
+| ------ | ------------------------------- |
+| `item` | `div[class='post-content'] p a` |
+
+</Route>
+
+### JSON
+
+在 `routeParams` 参数中以 query string 格式指定选项，可以控制提取数据
+
+| 键          | 含义                                    | 接受的值 | 默认值                               |
+| ----------- | --------------------------------------- | -------- | ------------------------------------ |
+| `title`     | 指定 RSS 的标题                         | `string` | 从当前域名的根路径网页中取 `<title>` |
+| `item`      | 通过 JSON Path 查找作为 `item` 元素     | `string` | 整个响应 JSON                        |
+| `itemTitle` | 在 `item` 中通过 JSON Path 查找作为标题 | `string` | 无                                   |
+| `itemLink`  | 在 `item` 中通过 JSON Path 查找作为链接 | `string` | 无                                   |
+| `itemDesc`  | 在 `item` 中通过 JSON Path 查找作为描述 | `string` | 无                                   |
+
+::: tip 注意
+
+JSON Path 目前只支持例如 `a.b.c` 的形式，如果需要从数组中读取，例如 `a[0].b`，可以写成 `a.0.b`
+
+:::
+
+<Route author="ttttmr" example="/rsshub/transform/json/https%3A%2F%2Fapi.github.com%2Frepos%2Fginuerzh%2Fgost%2Freleases/title=Gost%20releases&itemTitle=tag_name&itemLink=html_url&itemDesc=body" path="/rsshub/transform/json/:url/:routeParams" :paramsDesc="['URL地址，需经 URL 编码', '转换规则，需经 URL 编码']" selfhost="1">
+
+上述例子中参数解析如下
+
+| 参数           | 值                                                                       |
+| -------------- | ------------------------------------------------------------------------ |
+| `:url`         | `https://api.github.com/repos/ginuerzh/gost/releases`                    |
+| `:routeParams` | `title=Gost releases&itemTitle=tag_name&itemLink=html_url&itemDesc=body` |
+
+`routeParams` 参数解析如下
+
+| 参数        | 值              |
+| ----------- | --------------- |
+| `title`     | `Gost releases` |
+| `itemTitle` | `tag_name`      |
+| `itemLink`  | `html_url`      |
+| `itemDesc`  | `body`          |
+
+</Route>
 
 ## 自如
 
